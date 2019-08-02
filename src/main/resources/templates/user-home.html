@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+</head>
+<body>
+
+<div class="container" th:align="center">
+
+<h1 th:text="${'Hello ' + loggedInUser} + '!'"></h1>
+
+<h3>Select categories, of which You want quiz to consist:</h3>
+
+<form th:action="@{'/app-home/play'}" th:method="GET">
+    <input type="checkbox" th:each="category : ${categories}" th:name="${category.getId()}"
+           th:value="${category.getName()}" th:text="${category.getName()}"/>
+    <br>
+    <br>
+    <input class="btn btn-primary btn-lg active" type="submit" value="Start quiz with chosen categories">
+</form>
+
+<br>
+<br>
+
+<h2>Your lifetime statistics:</h2>
+    <br>
+<h4><strong th:text="'Biggest winning: '+${biggestWinning}"></strong></h4>
+<h4><strong th:text="'Number of games: ' +${numberOfGames}"></strong></h4>
+<h4><strong th:text="'Question accuracy percentage: '+${accuracy} + ' %'"></strong></h4>
+<h4><strong th:text="'Correct answers (sum, all): '+${correctAnswers}"></strong></h4>
+<h4><strong th:text="'Incorrect answers (sum, all): '+${incorrectAnswers}"></strong></h4>
+
+<br>
+
+<a href="/logout" class="btn btn-primary btn-lg active btn-block" role="button">Log out</a>
+
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+</body>
+</html>

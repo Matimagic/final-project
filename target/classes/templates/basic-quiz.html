@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Basic Quiz</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container" align="center">
+
+    <h2 >QUIZ QUESTION</h2>
+
+<h2 th:text="'You are currently playing for ' + ${questionValue}"></h2>
+
+<form th:action="@{'/quizgame/play/'+${game_identifier}+'/'+${question_number}}" th:method="POST">
+    <table>
+        <tr>
+            <td>
+                <p th:text="${question.getDescription()}"></p>
+            </td>
+        </tr>
+        <tr th:each="answer :${question.randomizeAnswers()}">
+            <td>
+                <input type="radio" name="answer" th:value="${answer.getId()}" th:text="${answer.getDescription()}">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit">
+            </td>
+        </tr>
+    </table>
+</form>
+
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+</body>
+</html>

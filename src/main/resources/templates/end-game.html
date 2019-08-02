@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>End Game</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container" align="center">
+<h1>Game has ended!</h1>
+<h2>Your earning is:</h2>
+<h2 th:text="${earning}"></h2>
+
+<tr>
+    <a href="/user-home" class="btn btn-primary btn-lg active" role="button">Go back to your profile</a>
+</tr>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</div>
+
+</body>
+</html>
